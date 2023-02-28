@@ -12,9 +12,8 @@ func _process(delta: float) -> void:
 
 
 func get_direction_to_player() -> Vector2:
-	var player_node = get_tree().get_first_node_in_group("player") as Player
-
-	if player_node != null:
-		return (player_node.global_position - global_position).normalized()
+	var player = get_tree().get_first_node_in_group("player") as Player
+	if player != null:
+		return (player.global_position - global_position).normalized()
 
 	return Vector2.ZERO
