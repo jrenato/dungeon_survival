@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d106etnrjsieg"]
+
+[ext_resource type="Script" path="res://src/player/player.gd" id="1_en7q2"]
+[ext_resource type="Texture2D" uid="uid://uia4n6n1pr6s" path="res://assets/images/tilemap_packed.png" id="1_n4c8m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m1tpd"]
+radius = 5.09902
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_en7q2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_n4c8m")
+region_enabled = true
+region_rect = Rect2(0, 128, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_m1tpd")
