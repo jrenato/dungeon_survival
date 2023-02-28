@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
+
 const MAX_SPEED : float = 200.0
 
 
