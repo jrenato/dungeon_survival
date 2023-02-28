@@ -1,6 +1,6 @@
 extends Node
 
-
+@export var max_range : float = 100.0
 @export var dagger_ability : PackedScene
 
 
@@ -10,10 +10,26 @@ func _ready() -> void:
 
 
 func _on_timer_timeout() -> void:
-	var player = get_tree().get_first_node_in_group("player") as Player
+	var player : Player = get_tree().get_first_node_in_group("player") as Player
 	if player == null:
 		return
 
+	var enemies : Array = get_tree().get_nodes_in_group("enemy")
+	enemies = enemies.filter(
+		func(enemy : Node2D):
+			return enemy.global_position.distance_squared_to(player.global_position) <= pow(max_range, 2)
+	)
+
+	if enemies.size() == 0:
+		return
+
+	enemies.sort_custom(
+		func(a : Node2D, b : Node2D):
+			var a_distance = a.global_position.distance_squared_to(player.global_position)
+			var b_distance = b.global_position.distance_squared_to(player.global_position)
+			return a_distance < b_distance
+	)
+
 	var dagger_instance : Node2D = dagger_ability.instantiate() as Node2D
 	player.get_parent().add_child(dagger_instance)
-	dagger_instance.global_position = player.global_position
+	dagger_instance.global_position = enemies[0].global_position

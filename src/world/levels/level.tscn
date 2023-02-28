@@ -18,3 +18,6 @@ layer_0/tile_data = PackedInt32Array(655375, 65537, 4, 589839, 1, 4, 524303, 1, 
 
 [node name="Enemy" parent="." instance=ExtResource("4_1y1rd")]
 position = Vector2(208, -200)
+
+[node name="Enemy2" parent="." instance=ExtResource("4_1y1rd")]
+position = Vector2(-400, 200)
