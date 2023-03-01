@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnr75l84i2hcd"]
+
+[ext_resource type="Texture2D" uid="uid://uia4n6n1pr6s" path="res://assets/tilemaps/tilemap_packed.png" id="1_a02to"]
+
+[node name="ExperienceVial" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_a02to")
+region_enabled = true
+region_rect = Rect2(128, 160, 16, 16)
