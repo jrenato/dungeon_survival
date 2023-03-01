@@ -3,24 +3,17 @@
 [ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_8ple4"]
 [ext_resource type="Texture2D" uid="uid://uia4n6n1pr6s" path="res://assets/tilemaps/tilemap_packed.png" id="1_tyt51"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_fkicn"]
+radius = 6.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_w6mub"]
 radius = 12.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fkicn"]
-radius = 7.0
-
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
-collision_layer = 0
+collision_layer = 8
+collision_mask = 9
+motion_mode = 1
 script = ExtResource("1_8ple4")
-
-[node name="Area2D" type="Area2D" parent="."]
-unique_name_in_owner = true
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -4)
-shape = SubResource("CircleShape2D_w6mub")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -4)
@@ -31,3 +24,12 @@ region_rect = Rect2(48, 160, 16, 16)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_fkicn")
+
+[node name="Area2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_w6mub")

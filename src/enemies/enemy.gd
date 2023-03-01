@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Enemy
 
 
-const MAX_SPEED : float = 75.0
+const MAX_SPEED : int = 40
 
 
 func _ready() -> void:
