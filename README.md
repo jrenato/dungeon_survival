@@ -1,2 +1,2 @@
-# Survival Game
-A simple survival game in Godot 4
+# Dungeon Survival
+A survival game made in Godot 4
