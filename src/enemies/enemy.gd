@@ -5,6 +5,10 @@ class_name Enemy
 const MAX_SPEED : float = 75.0
 
 
+func _ready() -> void:
+	%Area2D.area_entered.connect(on_area_entered)
+
+
 func _process(delta: float) -> void:
 	var direction : Vector2 = get_direction_to_player()
 	velocity = direction * MAX_SPEED
@@ -17,3 +21,7 @@ func get_direction_to_player() -> Vector2:
 		return (player.global_position - global_position).normalized()
 
 	return Vector2.ZERO
+
+
+func on_area_entered(area : Area2D) -> void:
+	queue_free()

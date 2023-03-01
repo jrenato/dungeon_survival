@@ -33,3 +33,8 @@ func _on_timer_timeout() -> void:
 	var dagger_instance : Node2D = dagger_ability.instantiate() as Node2D
 	player.get_parent().add_child(dagger_instance)
 	dagger_instance.global_position = enemies[0].global_position
+	# Add some random offset to prevent enemies[0].global_position == dagger_instance.global_position
+	dagger_instance.global_position += Vector2.RIGHT.rotated(randf_range(0, TAU))
+
+	var enemy_direction : Vector2 = enemies[0].global_position - dagger_instance.global_position
+	dagger_instance.rotation = enemy_direction.angle()
