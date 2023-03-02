@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dgkp7l3j4e5si" path="res://src/player/managers/experience_manager.tscn" id="3_a5jht"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_78ih6"]
-radius = 32.0
+radius = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m1tpd"]
 radius = 5.09902
