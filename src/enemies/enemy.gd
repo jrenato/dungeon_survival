@@ -25,4 +25,4 @@ func get_direction_to_player() -> Vector2:
 
 
 func on_area_entered(area : Area2D) -> void:
-	health_component.damage(5)
+	health_component.damage(10)
