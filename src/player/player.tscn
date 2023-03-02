@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwegybaokoxii"]
+[gd_scene load_steps=7 format=3 uid="uid://cwegybaokoxii"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_en7q2"]
 [ext_resource type="PackedScene" uid="uid://dw36hbeyy8b3" path="res://src/abilities/controllers/sword_ability_controller.tscn" id="2_m4gf6"]
 [ext_resource type="Texture2D" uid="uid://uia4n6n1pr6s" path="res://assets/tilemaps/tilemap_packed.png" id="2_mi5uo"]
+[ext_resource type="PackedScene" uid="uid://dgkp7l3j4e5si" path="res://src/player/managers/experience_manager.tscn" id="3_a5jht"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_78ih6"]
 radius = 32.0
@@ -18,6 +19,8 @@ script = ExtResource("1_en7q2")
 [node name="AbilityManager" type="Node" parent="."]
 
 [node name="SwordAbilityController" parent="AbilityManager" instance=ExtResource("2_m4gf6")]
+
+[node name="ExperienceManager" parent="." instance=ExtResource("3_a5jht")]
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 16
