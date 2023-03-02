@@ -10,7 +10,6 @@ func _ready() -> void:
 
 func increment_experience(ammount: int) -> void:
 	current_experience += ammount
-	print(current_experience)
 
 
 func on_experience_vial_collected(ammount: int) -> void:
