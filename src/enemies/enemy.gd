@@ -3,6 +3,7 @@ class_name Enemy
 
 
 const MAX_SPEED : int = 40
+@onready var health_component: HealthComponent = $HealthComponent
 
 
 func _ready() -> void:
@@ -24,4 +25,4 @@ func get_direction_to_player() -> Vector2:
 
 
 func on_area_entered(area : Area2D) -> void:
-	queue_free()
+	health_component.damage(5)
