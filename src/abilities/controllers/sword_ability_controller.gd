@@ -1,8 +1,9 @@
 extends Node
 
 @export var max_range : float = 100.0
-@export var dagger_ability : PackedScene
+@export var sword_ability : PackedScene
 
+var damage : float = 5.0
 
 func _ready() -> void:
 	# Right click and select "Access as Unique Name" to access a node using %
@@ -30,11 +31,13 @@ func _on_timer_timeout() -> void:
 			return a_distance < b_distance
 	)
 
-	var dagger_instance : Node2D = dagger_ability.instantiate() as Node2D
-	player.get_parent().add_child(dagger_instance)
-	dagger_instance.global_position = enemies[0].global_position
-	# Add some random offset to prevent enemies[0].global_position == dagger_instance.global_position
-	dagger_instance.global_position += Vector2.RIGHT.rotated(randf_range(0, TAU))
+	var sword_instance : SwordAbility = sword_ability.instantiate() as  SwordAbility
+	player.get_parent().add_child(sword_instance)
+	sword_instance.hitbox_component.damage = damage
 
-	var enemy_direction : Vector2 = enemies[0].global_position - dagger_instance.global_position
-	dagger_instance.rotation = enemy_direction.angle()
+	sword_instance.global_position = enemies[0].global_position
+	# Add some random offset to prevent enemies[0].global_position == sword_ability_instance.global_position
+	sword_instance.global_position += Vector2.RIGHT.rotated(randf_range(0, TAU))
+
+	var enemy_direction : Vector2 = enemies[0].global_position - sword_instance.global_position
+	sword_instance.rotation = enemy_direction.angle()

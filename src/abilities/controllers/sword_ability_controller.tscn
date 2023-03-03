@@ -5,7 +5,7 @@
 
 [node name="SwordAbilityController" type="Node"]
 script = ExtResource("1_ukm22")
-dagger_ability = ExtResource("2_nqrf8")
+sword_ability = ExtResource("2_nqrf8")
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
