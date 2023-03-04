@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://cqmu7yt3jewo0"]
 
 [ext_resource type="Script" path="res://src/gameplay/managers/enemy_manager.gd" id="1_xgtbm"]
 [ext_resource type="PackedScene" uid="uid://ucwgehrgp1pf" path="res://src/enemies/enemy.tscn" id="2_csapg"]
@@ -9,4 +9,5 @@ enemy_scene = ExtResource("2_csapg")
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
+one_shot = true
 autostart = true
