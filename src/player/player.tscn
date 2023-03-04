@@ -1,10 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwegybaokoxii"]
+[gd_scene load_steps=11 format=3 uid="uid://cwegybaokoxii"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_en7q2"]
 [ext_resource type="PackedScene" uid="uid://dw36hbeyy8b3" path="res://src/abilities/controllers/sword_ability_controller.tscn" id="2_m4gf6"]
 [ext_resource type="Texture2D" uid="uid://uia4n6n1pr6s" path="res://assets/tilemaps/tilemap_packed.png" id="2_mi5uo"]
 [ext_resource type="PackedScene" uid="uid://dgkp7l3j4e5si" path="res://src/player/managers/experience_manager.tscn" id="3_a5jht"]
 [ext_resource type="PackedScene" uid="uid://bkib7rirvtw7l" path="res://src/gameplay/components/health_component.tscn" id="3_ibqgm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2kbra"]
+bg_color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_akuer"]
+bg_color = Color(0.909804, 0.270588, 0.215686, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_78ih6"]
 radius = 16.0
@@ -32,13 +43,16 @@ script = ExtResource("1_en7q2")
 wait_time = 0.5
 one_shot = true
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 6)
 offset_left = -16.0
 offset_top = -22.0
 offset_right = 16.0
 offset_bottom = -16.0
 pivot_offset = Vector2(16, 3)
+theme_override_styles/background = SubResource("StyleBoxFlat_2kbra")
+theme_override_styles/fill = SubResource("StyleBoxFlat_akuer")
 max_value = 1.0
 value = 0.5
 show_percentage = false
@@ -51,21 +65,21 @@ collision_mask = 0
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_78ih6")
 
-[node name="CollisionArea2D" type="Area2D" parent="."]
-unique_name_in_owner = true
-collision_layer = 0
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea2D"]
-position = Vector2(0, -7)
-shape = SubResource("CircleShape2D_iujj6")
-debug_color = Color(0.894118, 0.321569, 0, 0.419608)
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
 texture = ExtResource("2_mi5uo")
 region_enabled = true
 region_rect = Rect2(0, 128, 16, 16)
+
+[node name="DamageArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea2D"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_iujj6")
+debug_color = Color(0.894118, 0.321569, 0, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)

@@ -7,17 +7,20 @@ const ACCELERATION_SMOOTHING : int = 25
 
 
 @onready var health_component: HealthComponent = $HealthComponent
-@onready var collision_area_2d: Area2D = %CollisionArea2D
+@onready var damage_area_2d: Area2D = %DamageArea2D
 @onready var damage_interval_timer: Timer = $DamageIntervalTimer
+@onready var health_bar: ProgressBar = %HealthBar
 
 
 var number_of_colliding_bodies : int = 0
 
 
 func _ready() -> void:
-	collision_area_2d.body_entered.connect(_on_body_entered)
-	collision_area_2d.body_exited.connect(_on_body_exited)
+	damage_area_2d.body_entered.connect(_on_body_entered)
+	damage_area_2d.body_exited.connect(_on_body_exited)
 	damage_interval_timer.timeout.connect(_on_damage_interval_timer_timeout)
+	health_component.health_changed.connect(_on_health_changed)
+	update_health_bar()
 
 
 func _process(delta: float) -> void:
@@ -41,6 +44,10 @@ func check_for_damage() -> void:
 	damage_interval_timer.start()
 
 
+func update_health_bar() -> void:
+	health_bar.value = health_component.get_health_percent()
+
+
 func _on_body_entered(other_body: Node2D) -> void:
 	number_of_colliding_bodies += 1
 	check_for_damage()
@@ -52,3 +59,7 @@ func _on_body_exited(other_body: Node2D) -> void:
 
 func _on_damage_interval_timer_timeout() -> void:
 	check_for_damage()
+
+
+func _on_health_changed() -> void:
+	update_health_bar()
