@@ -10,7 +10,7 @@ const TARGET_EXPERIENCE_GROWTH : float = 5.0
 
 
 var current_experience : float = 0
-var target_experience : float = 5
+var target_experience : float = 1
 var current_level : int = 1
 
 

@@ -4,6 +4,7 @@ class_name UpgradeManager
 
 @export var upgrade_pool : Array[AbilityUpgrade]
 @export var experience_manager : ExperienceManager
+@export var upgrade_screen_scene : PackedScene
 
 
 var current_upgrades : Dictionary = {}
@@ -15,15 +16,20 @@ func _ready() -> void:
 
 func on_level_up(level : int) -> void:
 	var chosen_upgrade : AbilityUpgrade = upgrade_pool.pick_random()
-
 	if chosen_upgrade == null:
 		return
+	var upgrade_screen_instance : Node = upgrade_screen_scene.instantiate()
+	add_child(upgrade_screen_instance)
+	upgrade_screen_instance.set_ability_upgrades([chosen_upgrade] as Array[AbilityUpgrade])
 
-	var has_upgrade : bool = current_upgrades.has(chosen_upgrade.id)
+
+
+func apply_upgrade(upgrade : AbilityUpgrade) -> void:
+	var has_upgrade : bool = current_upgrades.has(upgrade.id)
 	if !has_upgrade:
-		current_upgrades[chosen_upgrade.id] = {
-			"resource": chosen_upgrade,
+		current_upgrades[upgrade.id] = {
+			"resource": upgrade,
 			"level": 1,
 		}
 	else:
-		current_upgrades[chosen_upgrade.id]["level"] += 1
+		current_upgrades[upgrade.id]["level"] += 1
