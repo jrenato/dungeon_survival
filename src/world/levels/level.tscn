@@ -1,16 +1,20 @@
-[gd_scene load_steps=10 format=3 uid="uid://c7clj5sgfxtgv"]
+[gd_scene load_steps=12 format=3 uid="uid://c7clj5sgfxtgv"]
 
 [ext_resource type="PackedScene" path="res://src/gameplay/managers/enemy_manager.tscn" id="1_41efo"]
 [ext_resource type="PackedScene" uid="uid://cgkvxmha8yxbm" path="res://src/world/camera/game_camera.tscn" id="1_bohbl"]
 [ext_resource type="PackedScene" uid="uid://d1wypvk0qua3f" path="res://src/ui/arena_ui.tscn" id="1_hq14g"]
+[ext_resource type="Script" path="res://src/world/levels/level.gd" id="1_r6m2m"]
 [ext_resource type="PackedScene" uid="uid://cwegybaokoxii" path="res://src/player/player.tscn" id="1_saqk8"]
 [ext_resource type="TileSet" uid="uid://bicur6ubwdaip" path="res://resources/tilesets/tiny_dungeon.tres" id="1_xhy72"]
 [ext_resource type="PackedScene" uid="uid://urwngcska0k6" path="res://src/ui/experience_bar.tscn" id="2_2lbtx"]
-[ext_resource type="PackedScene" uid="uid://n7ihnc7q7xcg" path="res://src/gameplay/arena/arena_manager.tscn" id="2_2x3be"]
+[ext_resource type="PackedScene" uid="uid://c1uwxq8bdm6lk" path="res://src/gameplay/arena/arena_manager.tscn" id="2_2x3be"]
+[ext_resource type="PackedScene" uid="uid://c4ffjgbwh3hry" path="res://src/ui/end_screen.tscn" id="2_tu66w"]
 [ext_resource type="PackedScene" uid="uid://dgkp7l3j4e5si" path="res://src/player/managers/experience_manager.tscn" id="3_eu6ix"]
 [ext_resource type="PackedScene" uid="uid://bmrby0x4ucu55" path="res://src/player/managers/upgrade_manager.tscn" id="4_u1xce"]
 
 [node name="Level" type="Node"]
+script = ExtResource("1_r6m2m")
+end_screen_scene = ExtResource("2_tu66w")
 
 [node name="ArenaUI" parent="." node_paths=PackedStringArray("arena_manager") instance=ExtResource("1_hq14g")]
 arena_manager = NodePath("../ArenaManager")
@@ -38,6 +42,7 @@ layer_0/tile_data = PackedInt32Array(3145818, 1, 4, 3080282, 1, 4, 3014746, 1, 4
 y_sort_enabled = true
 
 [node name="Player" parent="Entities" instance=ExtResource("1_saqk8")]
+unique_name_in_owner = true
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]
 y_sort_enabled = true
