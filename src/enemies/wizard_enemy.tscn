@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://vwmo5p2swr0n"]
+[gd_scene load_steps=13 format=3 uid="uid://vwmo5p2swr0n"]
 
 [ext_resource type="Script" path="res://src/enemies/wizard_enemy.gd" id="1_1t5hq"]
 [ext_resource type="PackedScene" uid="uid://bkib7rirvtw7l" path="res://src/gameplay/components/health_component.tscn" id="1_48mlu"]
@@ -7,6 +7,109 @@
 [ext_resource type="PackedScene" uid="uid://cehkvq67acqjg" path="res://src/gameplay/components/death_component.tscn" id="2_837l6"]
 [ext_resource type="PackedScene" uid="uid://d2fnvnfm5sbij" path="res://src/gameplay/components/vial_drop_component.tscn" id="4_0ewno"]
 [ext_resource type="PackedScene" uid="uid://hrpfqxvhwa2t" path="res://src/gameplay/components/hurtbox_component.tscn" id="4_8vvrf"]
+
+[sub_resource type="Animation" id="Animation_rtokf"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Sprite2D:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.2), Vector2(1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_is_moving"
+}, {
+"args": [false],
+"method": &"set_is_moving"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_l8hsn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sauk7"]
+_data = {
+"RESET": SubResource("Animation_l8hsn"),
+"walk": SubResource("Animation_rtokf")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tievq"]
 radius = 8.0
@@ -19,9 +122,15 @@ collision_layer = 8
 collision_mask = 9
 script = ExtResource("1_1t5hq")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "walk"
+libraries = {
+"": SubResource("AnimationLibrary_sauk7")
+}
+
 [node name="VelocityComponent" parent="." instance=ExtResource("1_myjfy")]
 max_speed = 60
-acceleration = 2.0
+acceleration = 10.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_48mlu")]
 max_health = 30.0
@@ -42,6 +151,7 @@ region_enabled = true
 region_rect = Rect2(48, 144, 16, 16)
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_8vvrf")]
+visible = false
 position = Vector2(0, -8)
 health_component = NodePath("../HealthComponent")
 
@@ -49,5 +159,6 @@ health_component = NodePath("../HealthComponent")
 shape = SubResource("CircleShape2D_tievq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_ajoed")
