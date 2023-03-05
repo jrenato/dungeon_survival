@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://chocoxha15c2q"]
+[gd_scene load_steps=13 format=3 uid="uid://chocoxha15c2q"]
 
 [ext_resource type="Script" path="res://src/enemies/brown_rat_enemy.gd" id="1_q53by"]
+[ext_resource type="PackedScene" uid="uid://b5dhosc4dbcyp" path="res://src/gameplay/components/velocity_component.tscn" id="2_aj642"]
 [ext_resource type="PackedScene" uid="uid://bkib7rirvtw7l" path="res://src/gameplay/components/health_component.tscn" id="2_r1pn2"]
 [ext_resource type="PackedScene" uid="uid://d2fnvnfm5sbij" path="res://src/gameplay/components/vial_drop_component.tscn" id="3_da5y8"]
 [ext_resource type="PackedScene" uid="uid://cehkvq67acqjg" path="res://src/gameplay/components/death_component.tscn" id="4_7te04"]
@@ -86,6 +87,8 @@ autoplay = "walk"
 libraries = {
 "": SubResource("AnimationLibrary_4elu3")
 }
+
+[node name="VelocityComponent" parent="." instance=ExtResource("2_aj642")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_r1pn2")]
 
