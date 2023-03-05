@@ -5,6 +5,8 @@ class_name Player
 const MAX_SPEED : int = 125
 const ACCELERATION_SMOOTHING : int = 25
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var visuals: Node2D = $Visuals
 
 @onready var abilities: Node = $Abilities
 @onready var health_component: HealthComponent = $HealthComponent
@@ -35,6 +37,15 @@ func _process(delta: float) -> void:
 	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
 
 	move_and_slide()
+
+	if direction != Vector2.ZERO:
+		animation_player.play("walk")
+	else:
+		animation_player.stop()
+
+	var move_sign : int = sign(direction.x)
+	if move_sign != 0:
+		visuals.scale.x = Vector2.ONE.x * move_sign
 
 
 func get_movement_vector() -> Vector2:
