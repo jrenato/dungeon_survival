@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var sprite: Sprite2D = $Sprite2D
 @onready var area_2d: Area2D = %Area2D
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 
@@ -15,7 +16,9 @@ func tween_collect(percent: float, start_position: Vector2) -> void:
 
 	global_position = start_position.lerp(player.global_position, percent)
 	var direction_from_start : Vector2 = global_position - start_position
-	rotation_degrees = rad_to_deg(direction_from_start.angle()) + 90
+	
+	var target_rotation : float = direction_from_start.angle() + deg_to_rad(90)
+	rotation = lerp_angle(rotation, target_rotation, 1 - exp(-2 * get_process_delta_time()))
 
 
 func collect() -> void:
@@ -31,7 +34,14 @@ func on_area_entered(other_area: Area2D) -> void:
 	Callable(disable_collision).call_deferred()
 
 	var tween : Tween = create_tween()
-	# Check https://easings.net/en
+	tween.set_parallel(true)
+	
+	# EaseInBack
+	# Check https://easings.net
 	tween.tween_method(tween_collect.bind(global_position), 0.0, 1.0, 0.5)\
 		.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
+	# Scale down to zero
+	tween.tween_property(sprite, "scale", Vector2.ZERO, .05).set_delay(0.45)
+
+	tween.chain()
 	tween.tween_callback(collect)
