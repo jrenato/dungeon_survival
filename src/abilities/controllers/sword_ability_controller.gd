@@ -5,7 +5,8 @@ extends Node
 @export var sword_ability : PackedScene
 
 
-var damage : float = 5.0
+var base_damage : float = 5.0
+var additional_damage_percent: float = 1.0
 var base_wait_time : float
 
 
@@ -39,7 +40,7 @@ func _on_timer_timeout() -> void:
 	var sword_instance : SwordAbility = sword_ability.instantiate() as SwordAbility
 	var foreground_layer = get_tree().get_first_node_in_group("foreground_layer")
 	foreground_layer.add_child(sword_instance)
-	sword_instance.hitbox_component.damage = damage
+	sword_instance.hitbox_component.damage = base_damage * additional_damage_percent
 
 	sword_instance.global_position = enemies[0].global_position
 	# Add some random offset to prevent enemies[0].global_position == sword_ability_instance.global_position
@@ -50,9 +51,9 @@ func _on_timer_timeout() -> void:
 
 
 func _on_ability_upgraded(upgrade : AbilityUpgrade, current_upgrades : Dictionary) -> void:
-	if upgrade.id != "sword_rate":
-		return
-
-	var percent_reduction : float = current_upgrades["sword_rate"]["level"] * 0.1
-	%Timer.wait_time = base_wait_time * (1 - percent_reduction)
-	%Timer.start()
+	if upgrade.id == "sword_rate":
+		var percent_reduction : float = current_upgrades["sword_rate"]["level"] * 0.1
+		%Timer.wait_time = base_wait_time * (1 - percent_reduction)
+		%Timer.start()
+	elif upgrade.id == "sword_damage":
+		additional_damage_percent = 1 + (current_upgrades["sword_damage"]["level"] * 0.15)

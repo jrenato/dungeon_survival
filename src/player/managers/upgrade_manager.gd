@@ -69,6 +69,5 @@ func _on_level_up(level : int) -> void:
 	upgrade_screen_instance.upgrade_selected.connect(_on_upgrade_selected)
 
 
-
 func _on_upgrade_selected(upgrade : AbilityUpgrade) -> void:
 	apply_upgrade(upgrade)
