@@ -1,11 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://ucwgehrgp1pf"]
+[gd_scene load_steps=12 format=3 uid="uid://chocoxha15c2q"]
 
-[ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_8ple4"]
-[ext_resource type="Texture2D" uid="uid://uia4n6n1pr6s" path="res://assets/tilemaps/tilemap_packed.png" id="1_tyt51"]
-[ext_resource type="PackedScene" uid="uid://bkib7rirvtw7l" path="res://src/gameplay/components/health_component.tscn" id="2_0fh3k"]
-[ext_resource type="PackedScene" uid="uid://d2fnvnfm5sbij" path="res://src/gameplay/components/vial_drop_component.tscn" id="3_djsc6"]
-[ext_resource type="PackedScene" uid="uid://cehkvq67acqjg" path="res://src/gameplay/components/death_component.tscn" id="4_h6a8k"]
-[ext_resource type="PackedScene" uid="uid://hrpfqxvhwa2t" path="res://src/gameplay/components/hurtbox_component.tscn" id="5_jj8ys"]
+[ext_resource type="Script" path="res://src/enemies/brown_rat_enemy.gd" id="1_q53by"]
+[ext_resource type="PackedScene" uid="uid://bkib7rirvtw7l" path="res://src/gameplay/components/health_component.tscn" id="2_r1pn2"]
+[ext_resource type="PackedScene" uid="uid://d2fnvnfm5sbij" path="res://src/gameplay/components/vial_drop_component.tscn" id="3_da5y8"]
+[ext_resource type="PackedScene" uid="uid://cehkvq67acqjg" path="res://src/gameplay/components/death_component.tscn" id="4_7te04"]
+[ext_resource type="PackedScene" uid="uid://hrpfqxvhwa2t" path="res://src/gameplay/components/hurtbox_component.tscn" id="5_rh62v"]
+[ext_resource type="Texture2D" uid="uid://uia4n6n1pr6s" path="res://assets/tilemaps/tilemap_packed.png" id="6_4lwtw"]
 
 [sub_resource type="Animation" id="Animation_4524l"]
 length = 0.001
@@ -75,11 +75,11 @@ radius = 12.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_fkicn"]
 radius = 6.0
 
-[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+[node name="BrownRatEnemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 8
 collision_mask = 9
 motion_mode = 1
-script = ExtResource("1_8ple4")
+script = ExtResource("1_q53by")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "walk"
@@ -87,16 +87,16 @@ libraries = {
 "": SubResource("AnimationLibrary_4elu3")
 }
 
-[node name="HealthComponent" parent="." instance=ExtResource("2_0fh3k")]
+[node name="HealthComponent" parent="." instance=ExtResource("2_r1pn2")]
 
-[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_djsc6")]
+[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_da5y8")]
 health_component = NodePath("../HealthComponent")
 
-[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_h6a8k")]
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_7te04")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_jj8ys")]
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_rh62v")]
 visible = false
 health_component = NodePath("../HealthComponent")
 
@@ -107,7 +107,7 @@ shape = SubResource("CircleShape2D_cb8fh")
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
-texture = ExtResource("1_tyt51")
+texture = ExtResource("6_4lwtw")
 offset = Vector2(0, -4)
 region_enabled = true
 region_rect = Rect2(48, 160, 16, 16)
