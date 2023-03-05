@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bny8wdlnq2com"]
+[gd_scene load_steps=4 format=3 uid="uid://bny8wdlnq2com"]
 
 [ext_resource type="Script" path="res://src/gameplay/managers/enemy_manager.gd" id="1_xgtbm"]
 [ext_resource type="PackedScene" uid="uid://vwmo5p2swr0n" path="res://src/enemies/wizard_enemy.tscn" id="2_h356i"]
+[ext_resource type="PackedScene" uid="uid://chocoxha15c2q" path="res://src/enemies/brown_rat_enemy.tscn" id="2_tbb53"]
 
 [node name="EnemyManager" type="Node"]
 script = ExtResource("1_xgtbm")
-enemy_scene = ExtResource("2_h356i")
+brown_rat_enemy_scene = ExtResource("2_tbb53")
+wizard_enemy_scene = ExtResource("2_h356i")
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
