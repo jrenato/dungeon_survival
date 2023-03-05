@@ -41,7 +41,7 @@ func _on_timer_timeout() -> void:
 	if player == null:
 		return
 
-	var enemy : Enemy = enemy_scene.instantiate() as Enemy
+	var enemy : Node2D = enemy_scene.instantiate() as Node2D
 
 	var entities_layer = get_tree().get_first_node_in_group("entities_layer")
 	if entities_layer != null:
