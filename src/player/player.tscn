@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwegybaokoxii"]
+[gd_scene load_steps=12 format=3 uid="uid://cwegybaokoxii"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_en7q2"]
 [ext_resource type="PackedScene" uid="uid://dw36hbeyy8b3" path="res://src/abilities/controllers/sword_ability_controller.tscn" id="2_m4gf6"]
 [ext_resource type="Texture2D" uid="uid://uia4n6n1pr6s" path="res://assets/tilemaps/tilemap_packed.png" id="2_mi5uo"]
 [ext_resource type="PackedScene" uid="uid://dgkp7l3j4e5si" path="res://src/player/managers/experience_manager.tscn" id="3_a5jht"]
 [ext_resource type="PackedScene" uid="uid://bkib7rirvtw7l" path="res://src/gameplay/components/health_component.tscn" id="3_ibqgm"]
+[ext_resource type="PackedScene" uid="uid://dsdwdkllp6sc4" path="res://src/abilities/controllers/axe_ability_controller.tscn" id="4_vjagq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2kbra"]
 bg_color = Color(0.247059, 0.14902, 0.192157, 1)
@@ -36,6 +37,8 @@ script = ExtResource("1_en7q2")
 [node name="AbilityManager" type="Node" parent="."]
 
 [node name="SwordAbilityController" parent="AbilityManager" instance=ExtResource("2_m4gf6")]
+
+[node name="AxeAbilityController" parent="AbilityManager" instance=ExtResource("4_vjagq")]
 
 [node name="ExperienceManager" parent="." instance=ExtResource("3_a5jht")]
 
