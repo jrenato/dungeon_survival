@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://chocoxha15c2q"]
+[gd_scene load_steps=14 format=3 uid="uid://chocoxha15c2q"]
 
 [ext_resource type="Script" path="res://src/enemies/brown_rat_enemy.gd" id="1_q53by"]
 [ext_resource type="PackedScene" uid="uid://b5dhosc4dbcyp" path="res://src/gameplay/components/velocity_component.tscn" id="2_aj642"]
 [ext_resource type="PackedScene" uid="uid://bkib7rirvtw7l" path="res://src/gameplay/components/health_component.tscn" id="2_r1pn2"]
 [ext_resource type="PackedScene" uid="uid://d2fnvnfm5sbij" path="res://src/gameplay/components/vial_drop_component.tscn" id="3_da5y8"]
 [ext_resource type="PackedScene" uid="uid://cehkvq67acqjg" path="res://src/gameplay/components/death_component.tscn" id="4_7te04"]
+[ext_resource type="PackedScene" uid="uid://dui4hbtk88m0v" path="res://src/gameplay/components/hit_flash_component.tscn" id="5_25s6s"]
 [ext_resource type="PackedScene" uid="uid://hrpfqxvhwa2t" path="res://src/gameplay/components/hurtbox_component.tscn" id="5_rh62v"]
 [ext_resource type="Texture2D" uid="uid://uia4n6n1pr6s" path="res://assets/tilemaps/tilemap_packed.png" id="6_4lwtw"]
 
@@ -94,6 +95,10 @@ libraries = {
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_da5y8")]
 health_component = NodePath("../HealthComponent")
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_25s6s")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_7te04")]
 health_component = NodePath("../HealthComponent")
