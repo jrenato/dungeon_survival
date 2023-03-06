@@ -1,12 +1,10 @@
 extends CanvasLayer
 class_name UpgradeScreen
 
-
 signal upgrade_selected(upgrade: AbilityUpgrade)
 
-
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var card_container: HBoxContainer = %CardContainer
-
 
 @export var upgrade_card_scene : PackedScene
 
@@ -28,5 +26,7 @@ func set_ability_upgrades(upgrades: Array[AbilityUpgrade]) -> void:
 
 func _on_upgrade_selected(upgrade: AbilityUpgrade) -> void:
 	upgrade_selected.emit(upgrade)
+	animation_player.play("exit")
+	await animation_player.animation_finished
 	get_tree().paused = false
 	queue_free()
