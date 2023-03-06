@@ -1,18 +1,14 @@
 extends CharacterBody2D
 class_name Player
 
-
-const MAX_SPEED : int = 125
-const ACCELERATION_SMOOTHING : int = 25
-
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var visuals: Node2D = $Visuals
-
+@onready var velocity_component: VelocityComponent = $VelocityComponent as VelocityComponent
+@onready var health_component: HealthComponent = $HealthComponent as HealthComponent
 @onready var abilities: Node = $Abilities
-@onready var health_component: HealthComponent = $HealthComponent
+@onready var health_bar: ProgressBar = %HealthBar
+@onready var visuals: Node2D = $Visuals
 @onready var damage_area_2d: Area2D = %DamageArea2D
 @onready var damage_interval_timer: Timer = $DamageIntervalTimer
-@onready var health_bar: ProgressBar = %HealthBar
 
 
 var number_of_colliding_bodies : int = 0
@@ -31,12 +27,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var direction : Vector2 = get_movement_vector()
-	var target_velocity : Vector2 = direction * MAX_SPEED
-
-	#velocity = velocity.move_toward(target_velocity, delta)
-	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
-
-	move_and_slide()
+	velocity_component.accelerate_in_direction(direction)
+	velocity_component.move(self)
 
 	if direction != Vector2.ZERO:
 		animation_player.play("walk")
