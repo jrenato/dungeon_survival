@@ -16,11 +16,14 @@ func _ready() -> void:
 
 
 func set_ability_upgrades(upgrades: Array[AbilityUpgrade]) -> void:
+	var delay : float = 0
 	for upgrade in upgrades:
-		var card_instance = upgrade_card_scene.instantiate()
+		var card_instance : AbilityUpgradeCard = upgrade_card_scene.instantiate() as AbilityUpgradeCard
 		card_container.add_child(card_instance)
 		card_instance.set_ability_upgrade(upgrade)
+		card_instance.play_enter(delay)
 		card_instance.selected.connect(_on_upgrade_selected.bind(upgrade))
+		delay += 0.2
 
 
 func _on_upgrade_selected(upgrade: AbilityUpgrade) -> void:
