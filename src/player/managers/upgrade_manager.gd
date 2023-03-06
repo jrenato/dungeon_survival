@@ -4,7 +4,6 @@ class_name UpgradeManager
 @export var experience_manager : ExperienceManager
 @export var upgrade_screen_scene : PackedScene
 
-
 var upgrade_pool : WeightedTable = WeightedTable.new()
 var current_upgrades : Dictionary = {}
 
@@ -12,13 +11,14 @@ var upgrade_axe : AbilityUpgrade = preload("res://resources/upgrades/axe.tres")
 var upgrade_axe_damage : AbilityUpgrade = preload("res://resources/upgrades/axe_damage.tres")
 var upgrade_sword_rate : AbilityUpgrade = preload("res://resources/upgrades/sword_rate.tres")
 var upgrade_sword_damage : AbilityUpgrade = preload("res://resources/upgrades/sword_damage.tres")
-
+var upgrade_player_speed : AbilityUpgrade = preload("res://resources/upgrades/player_speed.tres")
 
 
 func _ready() -> void:
 	upgrade_pool.add_item(upgrade_axe, 10)
 	upgrade_pool.add_item(upgrade_sword_rate, 10)
 	upgrade_pool.add_item(upgrade_sword_damage, 10)
+	upgrade_pool.add_item(upgrade_player_speed, 5)
 
 	experience_manager.level_up.connect(_on_level_up)
 

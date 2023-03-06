@@ -12,9 +12,11 @@ class_name Player
 
 
 var number_of_colliding_bodies : int = 0
-
+var base_speed : int = 0
 
 func _ready() -> void:
+	base_speed = velocity_component.max_speed
+
 	damage_area_2d.body_entered.connect(_on_body_entered)
 	damage_area_2d.body_exited.connect(_on_body_exited)
 	damage_interval_timer.timeout.connect(_on_damage_interval_timer_timeout)
@@ -73,8 +75,8 @@ func _on_health_changed() -> void:
 
 
 func _on_ability_upgraded(upgrade : AbilityUpgrade, current_upgrades : Dictionary) -> void:
-	if not upgrade is Ability:
-		return
-
-	var ability : Ability = upgrade as Ability
-	abilities.add_child(ability.ability_controller_scene.instantiate())
+	if upgrade is Ability:
+		var ability : Ability = upgrade as Ability
+		abilities.add_child(ability.ability_controller_scene.instantiate())
+	elif upgrade.id == "player_speed":
+		velocity_component.max_speed = base_speed + (base_speed * current_upgrades["player_speed"]["level"] * 0.1)
