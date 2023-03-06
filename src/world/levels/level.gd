@@ -8,6 +8,7 @@ extends Node
 
 
 func _ready() -> void:
+	RenderingServer.set_default_clear_color(Color("763b36"))
 	player.health_component.died.connect(_on_player_died)
 
 
@@ -16,4 +17,3 @@ func _on_player_died() -> void:
 	add_child(end_screen)
 	end_screen.set_defeat_message()
 	player.queue_free()
-
