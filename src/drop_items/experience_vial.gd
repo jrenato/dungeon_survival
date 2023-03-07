@@ -3,6 +3,7 @@ extends Node2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var area_2d: Area2D = %Area2D
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
+@onready var random_audio_player: RandomAudioStreamPlayer = $RandomAudioStreamPlayer2DComponent as RandomAudioStreamPlayer
 
 
 func _ready() -> void:
@@ -35,7 +36,7 @@ func on_area_entered(other_area: Area2D) -> void:
 
 	var tween : Tween = create_tween()
 	tween.set_parallel(true)
-	
+
 	# EaseInBack
 	# Check https://easings.net
 	tween.tween_method(tween_collect.bind(global_position), 0.0, 1.0, 0.5)\
@@ -45,3 +46,5 @@ func on_area_entered(other_area: Area2D) -> void:
 
 	tween.chain()
 	tween.tween_callback(collect)
+
+	random_audio_player.play_random()

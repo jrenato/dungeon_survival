@@ -9,6 +9,7 @@ class_name Player
 @onready var visuals: Node2D = $Visuals
 @onready var damage_area_2d: Area2D = %DamageArea2D
 @onready var damage_interval_timer: Timer = $DamageIntervalTimer
+@onready var random_audio_player: RandomAudioStreamPlayer = $RandomAudioStreamPlayer2DComponent as RandomAudioStreamPlayer
 
 
 var number_of_colliding_bodies : int = 0
@@ -73,6 +74,7 @@ func _on_damage_interval_timer_timeout() -> void:
 func _on_health_changed() -> void:
 	GameEvents.emit_player_damaged()
 	update_health_bar()
+	random_audio_player.play_random()
 
 
 func _on_ability_upgraded(upgrade : AbilityUpgrade, current_upgrades : Dictionary) -> void:

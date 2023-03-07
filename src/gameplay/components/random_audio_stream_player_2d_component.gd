@@ -2,6 +2,9 @@ extends AudioStreamPlayer2D
 class_name RandomAudioStreamPlayer
 
 @export var streams : Array[AudioStream]
+@export var randomize_pitch : bool = false
+@export var min_pitch : float = 0.9
+@export var max_pitch : float = 1.1
 
 
 func play_random():
@@ -9,4 +12,8 @@ func play_random():
 		return
 
 	stream = streams.pick_random()
+
+	if randomize_pitch:
+		pitch_scale = randf_range(min_pitch, max_pitch)
+
 	play()
