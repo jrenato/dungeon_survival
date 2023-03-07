@@ -15,5 +15,5 @@ func _ready() -> void:
 func _on_player_died() -> void:
 	var end_screen: EndScreen = end_screen_scene.instantiate()
 	add_child(end_screen)
-	end_screen.set_defeat_message()
+	end_screen.set_defeat()
 	player.queue_free()

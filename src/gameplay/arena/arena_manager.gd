@@ -28,5 +28,6 @@ func get_time_elapsed() -> float:
 
 
 func on_timer_timeout() -> void:
-	var end_screen = end_screen_scene.instantiate()
+	var end_screen : EndScreen = end_screen_scene.instantiate() as EndScreen
 	add_child(end_screen)
+	end_screen.play_jingle()
