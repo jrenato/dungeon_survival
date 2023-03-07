@@ -211,10 +211,12 @@ script = ExtResource("1_smwqr")
 [node name="HoverPlayerComponent" parent="." instance=ExtResource("2_l5wmt")]
 unique_name_in_owner = true
 volume_db = -8.0
+bus = &"Master"
 streams = Array[AudioStream]([ExtResource("3_lc2u3"), ExtResource("4_laqbt"), ExtResource("5_28mcs"), ExtResource("6_f3u3d"), ExtResource("7_f7fsi"), ExtResource("8_har5x"), ExtResource("9_o8wnn"), ExtResource("10_smnap"), ExtResource("11_p70by"), ExtResource("12_6stht")])
 
 [node name="ClickPlayerComponent" parent="." instance=ExtResource("2_l5wmt")]
 unique_name_in_owner = true
+bus = &"Master"
 streams = Array[AudioStream]([ExtResource("3_lc2u3"), ExtResource("4_laqbt"), ExtResource("5_28mcs"), ExtResource("6_f3u3d"), ExtResource("7_f7fsi"), ExtResource("8_har5x"), ExtResource("9_o8wnn"), ExtResource("10_smnap"), ExtResource("11_p70by"), ExtResource("12_6stht")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -248,8 +250,7 @@ theme_type_variation = &"AlternatePanelContainer"
 [node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_outline_color = Color(0.14902, 0.168627, 0.266667, 1)
-theme_override_constants/outline_size = 8
+theme_type_variation = &"BlueOutlineLabel"
 theme_override_font_sizes/font_size = 32
 text = "Title"
 horizontal_alignment = 1
@@ -259,8 +260,6 @@ autowrap_mode = 2
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0.14902, 0.168627, 0.266667, 1)
-theme_override_colors/font_outline_color = Color(0.14902, 0.168627, 0.266667, 1)
-theme_override_constants/outline_size = 8
+theme_type_variation = &"BlueOutlineLabel"
 text = "Upgrade description here and testing long description"
 autowrap_mode = 2

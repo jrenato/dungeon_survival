@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4fncnbsipybj"]
+[gd_scene load_steps=5 format=3 uid="uid://c4fncnbsipybj"]
 
 [ext_resource type="PackedScene" uid="uid://c0nq7w1b1exx5" path="res://src/ui/sound_button.tscn" id="1_btxoa"]
 [ext_resource type="Script" path="res://src/ui/main_menu.gd" id="1_s24we"]
 [ext_resource type="TileSet" uid="uid://bicur6ubwdaip" path="res://resources/tilesets/tiny_dungeon.tres" id="1_wqhrs"]
+[ext_resource type="PackedScene" uid="uid://cxsld5j4127du" path="res://src/ui/vignette.tscn" id="4_4jmav"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_s24we")
@@ -38,6 +39,7 @@ size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
 theme_override_font_sizes/font_size = 32
 text = "Dungeon Survival"
 
@@ -55,3 +57,5 @@ text = "Options"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
+
+[node name="Vignette" parent="." instance=ExtResource("4_4jmav")]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cr312keea1g50"]
+[gd_scene load_steps=5 format=3 uid="uid://cr312keea1g50"]
 
 [ext_resource type="Script" path="res://src/ui/options_menu.gd" id="1_j7n7n"]
 [ext_resource type="TileSet" uid="uid://bicur6ubwdaip" path="res://resources/tilesets/tiny_dungeon.tres" id="2_hii5u"]
 [ext_resource type="PackedScene" uid="uid://c0nq7w1b1exx5" path="res://src/ui/sound_button.tscn" id="3_12fq6"]
+[ext_resource type="PackedScene" uid="uid://cxsld5j4127du" path="res://src/ui/vignette.tscn" id="4_ovo2p"]
 
 [node name="OptionsMenu" type="CanvasLayer"]
 script = ExtResource("1_j7n7n")
@@ -40,6 +41,7 @@ theme_override_constants/separation = 24
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
 theme_override_font_sizes/font_size = 32
 text = "Options"
 horizontal_alignment = 1
@@ -53,6 +55,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/WindowOptionContainer"]
 layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
 text = "Window Mode"
 
 [node name="WindowButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/WindowOptionContainer" instance=ExtResource("3_12fq6")]
@@ -67,6 +70,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MusicOptionContainer"]
 layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
 text = "Music Volume"
 
 [node name="MusicSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MusicOptionContainer"]
@@ -80,6 +84,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SoundOptionContainer"]
 layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
 text = "Sound Volume"
 
 [node name="SoundSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SoundOptionContainer"]
@@ -94,3 +99,6 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Back"
+
+[node name="Vignette" parent="." instance=ExtResource("4_ovo2p")]
+layer = 2
