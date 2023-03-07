@@ -5,7 +5,7 @@ class_name WizardEnemy
 @onready var velocity_component: VelocityComponent = $VelocityComponent as VelocityComponent
 @onready var visuals: Node2D = $Visuals
 @onready var hurtbox_component: Area2D = $HurtboxComponent
-@onready var random_player: RandomStreamPlayerComponent = $HitRandomPlayerComponent as RandomStreamPlayerComponent
+@onready var random_player: RandomStreamPlayer2dComponent = $HitRandomPlayerComponent as RandomStreamPlayer2dComponent
 
 var is_moving : bool = false
 

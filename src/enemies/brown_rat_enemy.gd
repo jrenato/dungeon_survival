@@ -4,7 +4,7 @@ class_name BrownRatEnemy
 @onready var velocity_component: VelocityComponent = $VelocityComponent as VelocityComponent
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent as HurtboxComponent
 @onready var visuals: Node2D = $Visuals
-@onready var random_player: RandomStreamPlayerComponent = $HitRandomPlayerComponent as RandomStreamPlayerComponent
+@onready var random_player: RandomStreamPlayer2dComponent = $HitRandomPlayerComponent as RandomStreamPlayer2dComponent
 
 
 func _ready() -> void:

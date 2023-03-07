@@ -9,7 +9,7 @@ class_name Player
 @onready var visuals: Node2D = $Visuals
 @onready var damage_area_2d: Area2D = %DamageArea2D
 @onready var damage_interval_timer: Timer = $DamageIntervalTimer
-@onready var random_player: RandomStreamPlayerComponent = $RandomStreamPlayer2DComponent as RandomStreamPlayerComponent
+@onready var random_player: RandomStreamPlayer2dComponent = $RandomStreamPlayer2DComponent as RandomStreamPlayer2dComponent
 
 
 var number_of_colliding_bodies : int = 0

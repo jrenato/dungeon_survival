@@ -3,7 +3,7 @@ extends Node2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var area_2d: Area2D = %Area2D
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
-@onready var random_player: RandomStreamPlayerComponent = $RandomStreamPlayer2DComponent as RandomStreamPlayerComponent
+@onready var random_player: RandomStreamPlayer2dComponent = $RandomStreamPlayer2DComponent as RandomStreamPlayer2dComponent
 
 
 func _ready() -> void:

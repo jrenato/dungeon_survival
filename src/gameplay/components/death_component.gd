@@ -6,7 +6,7 @@ extends Node2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
-@onready var hit_random_player: RandomStreamPlayerComponent = $HitRandomPlayerComponent as RandomStreamPlayerComponent
+@onready var hit_random_player: RandomStreamPlayer2dComponent = $HitRandomPlayerComponent as RandomStreamPlayer2dComponent
 
 
 func _ready() -> void:
