@@ -4,7 +4,7 @@ class_name BrownRatEnemy
 @onready var velocity_component: VelocityComponent = $VelocityComponent as VelocityComponent
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent as HurtboxComponent
 @onready var visuals: Node2D = $Visuals
-@onready var audio_stream_player: RandomAudioStreamPlayer = $HitRandomAudioPlayerComponent as RandomAudioStreamPlayer
+@onready var random_player: RandomStreamPlayerComponent = $HitRandomPlayerComponent as RandomStreamPlayerComponent
 
 
 func _ready() -> void:
@@ -21,4 +21,4 @@ func _process(delta: float) -> void:
 
 
 func _on_hit() -> void:
-	audio_stream_player.play_random()
+	random_player.play_random()

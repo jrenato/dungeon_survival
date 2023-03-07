@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cgkvxmha8yxbm" path="res://src/world/camera/game_camera.tscn" id="1_bohbl"]
 [ext_resource type="PackedScene" uid="uid://d1wypvk0qua3f" path="res://src/ui/arena_ui.tscn" id="1_hq14g"]
 [ext_resource type="Script" path="res://src/world/levels/level.gd" id="1_r6m2m"]
-[ext_resource type="PackedScene" uid="uid://cwegybaokoxii" path="res://src/player/player.tscn" id="1_saqk8"]
+[ext_resource type="PackedScene" uid="uid://x6cv07rolbwv" path="res://src/player/player.tscn" id="1_saqk8"]
 [ext_resource type="TileSet" uid="uid://bicur6ubwdaip" path="res://resources/tilesets/tiny_dungeon.tres" id="1_xhy72"]
 [ext_resource type="PackedScene" uid="uid://urwngcska0k6" path="res://src/ui/experience_bar.tscn" id="2_2lbtx"]
 [ext_resource type="PackedScene" uid="uid://c1uwxq8bdm6lk" path="res://src/gameplay/arena/arena_manager.tscn" id="2_2x3be"]

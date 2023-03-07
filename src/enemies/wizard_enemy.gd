@@ -5,7 +5,7 @@ class_name WizardEnemy
 @onready var velocity_component: VelocityComponent = $VelocityComponent as VelocityComponent
 @onready var visuals: Node2D = $Visuals
 @onready var hurtbox_component: Area2D = $HurtboxComponent
-@onready var audio_stream_player: RandomAudioStreamPlayer = $HitRandomAudioPlayerComponent as RandomAudioStreamPlayer
+@onready var random_player: RandomStreamPlayerComponent = $HitRandomPlayerComponent as RandomStreamPlayerComponent
 
 var is_moving : bool = false
 
@@ -32,4 +32,4 @@ func set_is_moving(moving : bool):
 
 
 func _on_hit() -> void:
-	audio_stream_player.play_random()
+	random_player.play_random()

@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://cehkvq67acqjg"]
+[gd_scene load_steps=16 format=3 uid="uid://ckkt2xe5m4obw"]
 
 [ext_resource type="Texture2D" uid="uid://uia4n6n1pr6s" path="res://assets/tilemaps/tilemap_packed.png" id="1_5ags4"]
 [ext_resource type="Script" path="res://src/gameplay/components/death_component.gd" id="1_my01i"]
-[ext_resource type="PackedScene" uid="uid://lgmbxb4fvn64" path="res://src/gameplay/components/random_audio_stream_player_2d_component.tscn" id="3_ugbjy"]
+[ext_resource type="PackedScene" uid="uid://cr0rskccbqmsy" path="res://src/gameplay/components/random_stream_player_2d_component.tscn" id="3_1i0bk"]
 [ext_resource type="AudioStream" uid="uid://25jy0glb8o8f" path="res://assets/audio/sfx/footstep_carpet_000.ogg" id="4_7lv57"]
 [ext_resource type="AudioStream" uid="uid://bn6njoaaw7gye" path="res://assets/audio/sfx/footstep_carpet_001.ogg" id="5_q8xci"]
 [ext_resource type="AudioStream" uid="uid://b2b1j3lij30c2" path="res://assets/audio/sfx/footstep_carpet_002.ogg" id="6_uuovg"]
@@ -101,7 +101,6 @@ libraries = {
 "": SubResource("AnimationLibrary_xqjau")
 }
 
-[node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("3_ugbjy")]
-max_distance = 300.0
+[node name="HitRandomPlayerComponent" parent="." instance=ExtResource("3_1i0bk")]
 bus = &"sfx"
 streams = Array[AudioStream]([ExtResource("4_7lv57"), ExtResource("5_q8xci"), ExtResource("6_uuovg"), ExtResource("7_we7ir"), ExtResource("8_seh6f")])
