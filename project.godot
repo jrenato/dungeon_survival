@@ -12,6 +12,8 @@ config_version=5
 
 config/name="Dungeon Survival"
 run/main_scene="res://src/ui/main_menu.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="DungeonSurvival"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://dungeon_survival.png"
 
