@@ -1,6 +1,7 @@
 extends Node
 
-const SAVE_FILE_PATH = "user://game.save"
+#const SAVE_FILE_PATH = "user://game.save"
+const SAVE_FILE_PATH = "user://game.json"
 
 var data : Dictionary = {
 	"coins": 0,
@@ -13,16 +14,26 @@ func _ready() -> void:
 	load_data()
 
 
-func load_data():
+func load_data() -> void:
 	if not FileAccess.file_exists(SAVE_FILE_PATH):
 		return
 	var file : FileAccess = FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
-	data = file.get_var()
+	# TODO: Research if get_var and store_var are safe
+#	data = file.get_var()
+	var json = JSON.new()
+	var parse_result = json.parse(file.get_as_text())
+	if parse_result != OK:
+		printerr("Error loading options")
+		return
+
+	data = json.get_data()
 
 
 func save_data():
 	var file : FileAccess = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
-	file.store_var(data)
+#	file.store_var(data)
+	var json_string : String = JSON.stringify(data, "\t")
+	file.store_string(json_string)
 
 
 func add_meta_upgrade(upgrade: MetaUpgrade) -> void:
