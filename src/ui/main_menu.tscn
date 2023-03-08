@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cxsld5j4127du" path="res://src/ui/vignette.tscn" id="4_4jmav"]
 
 [node name="MainMenu" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_s24we")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -59,3 +60,4 @@ layout_mode = 2
 text = "Quit"
 
 [node name="Vignette" parent="." instance=ExtResource("4_4jmav")]
+layer = 2

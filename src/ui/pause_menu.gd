@@ -28,8 +28,8 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("pause"):
-		close()
 		get_tree().root.set_input_as_handled
+		close()
 
 
 func close() -> void:
@@ -55,6 +55,8 @@ func _on_resume_button_pressed() -> void:
 
 
 func _on_options_button_pressed() -> void:
+#	ScreenTransition.transition()
+#	await ScreenTransition.transition_halfway
 	var options_menu : OptionsMenu = options_menu_scene.instantiate() as OptionsMenu
 	add_child(options_menu)
 	options_menu.back_button.pressed.connect(_on_options_close.bind(options_menu))
@@ -65,5 +67,7 @@ func _on_options_close(options_menu : OptionsMenu) -> void:
 
 
 func _on_quit_button_pressed() -> void:
+	ScreenTransition.transition()
+	await ScreenTransition.transition_halfway
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://src/ui/main_menu.tscn")

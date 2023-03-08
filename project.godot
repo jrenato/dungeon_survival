@@ -19,6 +19,7 @@ config/icon="res://dungeon_survival.png"
 
 GameEvents="*res://src/gameplay/autoload/game_events.tscn"
 MusicPlayer="*res://src/gameplay/autoload/music_player.tscn"
+ScreenTransition="*res://src/gameplay/autoload/screen_transition.tscn"
 
 [debug]
 

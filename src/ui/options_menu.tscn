@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cxsld5j4127du" path="res://src/ui/vignette.tscn" id="4_ovo2p"]
 
 [node name="OptionsMenu" type="CanvasLayer"]
+process_mode = 3
 layer = 2
 script = ExtResource("1_j7n7n")
 

@@ -15,10 +15,14 @@ func _ready() -> void:
 
 
 func _on_play_button_pressed() -> void:
+	ScreenTransition.transition()
+	await ScreenTransition.transition_halfway
 	get_tree().change_scene_to_file("res://src/world/levels/level.tscn")
 
 
 func _on_options_button_pressed() -> void:
+#	ScreenTransition.transition()
+#	await ScreenTransition.transition_halfway
 	var options_menu : OptionsMenu = options_menu_scene.instantiate() as OptionsMenu
 	add_child(options_menu)
 	options_menu.back_button.pressed.connect(_on_options_close.bind(options_menu))
