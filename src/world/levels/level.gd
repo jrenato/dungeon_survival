@@ -23,3 +23,4 @@ func _on_player_died() -> void:
 	add_child(end_screen)
 	end_screen.set_defeat()
 	player.queue_free()
+	MetaProgression.save_data()
