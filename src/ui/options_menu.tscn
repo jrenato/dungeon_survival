@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cxsld5j4127du" path="res://src/ui/vignette.tscn" id="4_ovo2p"]
 
 [node name="OptionsMenu" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_j7n7n")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -101,4 +102,4 @@ size_flags_horizontal = 0
 text = "Back"
 
 [node name="Vignette" parent="." instance=ExtResource("4_ovo2p")]
-layer = 2
+layer = 3
