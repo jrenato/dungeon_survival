@@ -39,8 +39,14 @@ func play_jingle(defeat: bool = false) -> void:
 func _on_continue_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://src/ui/meta_menu.tscn")
+#	ScreenTransition.transition_to_scene("res://src/world/levels/level.tscn")
+#	await ScreenTransition.transition_halfway
+#	get_tree().paused = false
 
 
 func _on_quit_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://src/ui/main_menu.tscn")
+#	ScreenTransition.transition_to_scene("res://src/world/levels/level.tscn")
+#	await ScreenTransition.transition_halfway
+#	get_tree().paused = false
