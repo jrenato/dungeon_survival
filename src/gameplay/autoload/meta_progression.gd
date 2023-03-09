@@ -45,5 +45,13 @@ func add_meta_upgrade(upgrade: MetaUpgrade) -> void:
 	save_data()
 
 
+func get_meta_upgrade_level(upgrade_id : String) -> int:
+	if not data["meta_upgrades"].has(upgrade_id):
+		return 0
+	if not data["meta_upgrades"][upgrade_id].has("level"):
+		return 0
+	return data["meta_upgrades"][upgrade_id]["level"]
+
+
 func _on_experience_collected(ammount: float) -> void:
 	data["coins"] += ammount
