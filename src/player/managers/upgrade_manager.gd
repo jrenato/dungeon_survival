@@ -17,7 +17,7 @@ var upgrade_anvil : AbilityUpgrade = preload("res://resources/upgrades/anvil.tre
 
 func _ready() -> void:
 	upgrade_pool.add_item(upgrade_axe, 10)
-	upgrade_pool.add_item(upgrade_anvil, 10000)
+	upgrade_pool.add_item(upgrade_anvil, 10)
 	upgrade_pool.add_item(upgrade_sword_rate, 10)
 	upgrade_pool.add_item(upgrade_sword_damage, 10)
 	upgrade_pool.add_item(upgrade_player_speed, 5)
