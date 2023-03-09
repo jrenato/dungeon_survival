@@ -2,6 +2,7 @@ extends CanvasLayer
 class_name MainMenu
 
 @onready var play_button: Button = %PlayButton
+@onready var upgrades_button: Button = %UpgradesButton
 @onready var options_button: Button = %OptionsButton
 @onready var quit_button: Button = %QuitButton
 
@@ -10,14 +11,19 @@ var options_menu_scene : PackedScene = preload("res://src/ui/options_menu.tscn")
 
 func _ready() -> void:
 	play_button.pressed.connect(_on_play_button_pressed)
+	upgrades_button.pressed.connect(_on_upgrades_button_pressed)
 	options_button.pressed.connect(_on_options_button_pressed)
 	quit_button.pressed.connect(_on_quit_button_pressed)
 
 
 func _on_play_button_pressed() -> void:
-	ScreenTransition.transition()
-	await ScreenTransition.transition_halfway
+#	ScreenTransition.transition_to_scene("res://src/world/levels/level.tscn")
 	get_tree().change_scene_to_file("res://src/world/levels/level.tscn")
+
+
+func _on_upgrades_button_pressed() -> void:
+#	ScreenTransition.transition_to_scene("res://src/ui/meta_menu.tscn")
+	get_tree().change_scene_to_file("res://src/ui/meta_menu.tscn")
 
 
 func _on_options_button_pressed() -> void:

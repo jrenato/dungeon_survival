@@ -67,7 +67,6 @@ func _on_options_close(options_menu : OptionsMenu) -> void:
 
 
 func _on_quit_button_pressed() -> void:
-	ScreenTransition.transition()
-	await ScreenTransition.transition_halfway
 	get_tree().paused = false
+#	ScreenTransition.transition_to_scene("res://src/ui/main_menu.tscn")
 	get_tree().change_scene_to_file("res://src/ui/main_menu.tscn")
