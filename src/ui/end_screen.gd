@@ -6,7 +6,7 @@ class_name EndScreen
 @onready var panel_container: PanelContainer = %PanelContainer
 @onready var title_label: Label = %TitleLabel
 @onready var message_label: Label = %MessageLabel
-@onready var restart_button: Button = %RestartButton
+@onready var continue_button: Button = %ContinueButton
 @onready var quit_button: Button = %QuitButton
 
 
@@ -19,8 +19,8 @@ func _ready() -> void:
 
 
 	get_tree().paused = true
-	restart_button.pressed.connect(_on_restart_button_pressed)
-	quit_button.pressed.connect(_on_quit_button_pressed)
+	continue_button.pressed.connect(_on_continue_pressed)
+	quit_button.pressed.connect(_on_quit_pressed)
 
 
 func set_defeat() -> void:
@@ -36,12 +36,11 @@ func play_jingle(defeat: bool = false) -> void:
 		victory_player.play()
 
 
-func _on_restart_button_pressed() -> void:
-	ScreenTransition.transition()
-	await ScreenTransition.transition_halfway
+func _on_continue_pressed() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://src/world/levels/level.tscn")
+	get_tree().change_scene_to_file("res://src/ui/meta_menu.tscn")
 
 
-func _on_quit_button_pressed() -> void:
-	get_tree().quit()
+func _on_quit_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://src/ui/main_menu.tscn")
