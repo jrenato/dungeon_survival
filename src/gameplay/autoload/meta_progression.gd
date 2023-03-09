@@ -42,6 +42,7 @@ func add_meta_upgrade(upgrade: MetaUpgrade) -> void:
 			"level": 0
 		}
 	data["meta_upgrades"][upgrade.id]["level"] += 1
+	save_data()
 
 
 func _on_experience_collected(ammount: float) -> void:
