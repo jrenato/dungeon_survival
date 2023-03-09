@@ -28,7 +28,7 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("pause"):
-		get_tree().root.set_input_as_handled
+		get_tree().root.set_input_as_handled()
 		close()
 
 
